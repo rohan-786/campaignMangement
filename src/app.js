@@ -6,27 +6,26 @@ app.use(express.json());
 app.use(cors());
 
 let jsonData = require('../TestJSON.json');
-const { getUserInfo, getUserActivityData } = require('./utility/commonUtils');
+const {getPastCampaignsData ,getUpcomingCampaignsData,getLiveCampaignsData } = require('./utility/commonUtils');
 
-app.use('/get-userinfo', (req, res) => {
-    try {
-        const userInfo = getUserInfo(jsonData);
-        res.status(200).json(userInfo);
-    } catch (error) {
-        console.error("[ERROR] issue generate while processing on data", err);
-    }
+app.use('/get-past-campaigns-info', (req, res,err) => {
+    const data  = getPastCampaignsData(jsonData.data);
+    data ? res.status(200).send(data) : err.status(500).send("Internal Server error");
 })
 
-app.use('/get-user-activity', (req, res) => {
-    try {
-        let searchId = req.headers.id;
-        if (!searchId) throw new Error("Search Id Missing");
-        const userActivityInfo = getUserActivityData(searchId, jsonData);
-        res.status(200).json(userActivityInfo);
-    } catch (e) {
-        console.error("[ERROR]", err);
-    }
+app.use('/get-upcoming-campaigns-info', (req, res,err) => {
+    const data  = getUpcomingCampaignsData(jsonData.data);
+    data ? res.status(200).send(data) : err.status(500).send("Internal Server error");
+   
 })
+
+app.use('/get-live-campaigns-info', (req, res,err) => {
+    const data  = getLiveCampaignsData(jsonData.data);
+    data ? res.status(200).send(data) : err.status(500).send("Internal Server error");
+  
+})
+
+
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500);

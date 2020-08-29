@@ -15,5 +15,14 @@ function isEmpty(value) {
     return false;
 }
 
+function getDaysLabel(val){
+    if(!val) return null;
+    return val >1 ? `${val} Days ago` : `${val} Day ago` 
+}
+
+
 module.exports={
-    isEmpty}
+    isEmpty,
+    getDaysLabel
+   
+}

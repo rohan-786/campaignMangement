@@ -1,5 +1,5 @@
 const {app} = require('./app');
-const port = 80;
+const port = 3333;
 
 
 /** start node server */
