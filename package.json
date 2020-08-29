@@ -1,0 +1,27 @@
+{
+  "name": "bookstore-backend",
+  "version": "1.0.0",
+  "description": "This project will provide the webservice and api point for BookStore application.",
+  "main": "index.js",
+  "dependencies": {
+    "babel-plugin-dynamic-import-node": "^2.2.0",
+    "express": "^4.16.4",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.18.2",
+    "cors": "^2.8.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohan-786/Project-BookStore-backend.git"
+  },
+  "author": "Rohan Choudhary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohan-786/Project-BookStore-backend/issues"
+  },
+  "homepage": "https://github.com/rohan-786/Project-BookStore-backend#readme"
+}
