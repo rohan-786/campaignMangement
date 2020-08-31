@@ -2,7 +2,8 @@ const moment = require("moment");
 
 const customDate = {
     integerToDate: function(val) {
-        return val ? new Date(val) : null;
+        let val1 = parseInt(val);
+        return val1 ? new Date(val1) : null;
     },
     dateToInteger: function(val){
         return val ? new Date(val).getTime():null; 

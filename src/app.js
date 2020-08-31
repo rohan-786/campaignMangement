@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 let jsonData = require('../TestJSON.json');
-const {getPastCampaignsData ,getUpcomingCampaignsData,getLiveCampaignsData } = require('./utility/commonUtils');
+const {getPastCampaignsData ,getUpcomingCampaignsData,getLiveCampaignsData,updateDateForCampaign } = require('./utility/commonUtils');
 
 app.use('/get-past-campaigns-info', (req, res,err) => {
     const data  = getPastCampaignsData(jsonData.data);
@@ -23,6 +23,14 @@ app.use('/get-live-campaigns-info', (req, res,err) => {
     const data  = getLiveCampaignsData(jsonData.data);
     data ? res.status(200).send(data) : err.status(500).send("Internal Server error");
   
+})
+
+app.use('/update-list',(req,res,err)=>{
+    const id = req.headers.id;
+    const dateval = req.headers.dateval;
+    console.log("date",dateval);
+    updateDateForCampaign(id,dateval,jsonData.data);
+    res.status(200).send({});
 })
 
 
